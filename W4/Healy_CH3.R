@@ -8,8 +8,8 @@ library(socviz)
 ## 3.3 Mappings Link Data to Things You See
 
 # Reminder of what gapminder looks like
-gapminder
-
+gapminder <- gapminder
+view(gapminder)
 p <- # Defining the landscape of our graph 
 p <- ggplot(data = gapminder)
 p
@@ -19,11 +19,11 @@ p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp))
 p
-
+# didnt specify what plot you are drawing
 ## 3.4 Build Your Plots Layer by Layer
 p + geom_point() 
 
-gapdata <- as.data.frame(gapminder)
+
 
 # Life expectancy vs GDP, using a smoother.
 
@@ -36,18 +36,18 @@ p + geom_smooth()
 
 p   + geom_point()+ geom_smooth()
 
+#the sequence is important, point always needs to go before smooth
 
 # ================= Solve part a of Hands-on Week 4
-
 # Fitting a linear regression to data:
 # You can add a straight “linear model” line.
 
 p + geom_point() + geom_smooth(method = "lm") 
-
 # Default method:
 # By default, the trend line that’s added is a gam smooth line.
 # gam: "generalized additive mode" smoothing
 # Smoothing methods: lm, glm, gam, loess
+#press F1 for help on functions
 
 p + geom_point() + geom_smooth(method = "gam") 
 p + geom_point() + geom_smooth() 
@@ -121,7 +121,7 @@ p + geom_point(alpha = 0.3) +
 
 p + geom_point(alpha = 0.3) + geom_smooth(method = "gam") +
   scale_x_log10(labels = scales::dollar) +
-  labs(x = "GDP Per Capita", y = "Life Expectancy in Years",
+  labs(x = "log GDP Per Capita", y = "Life Expectancy in Years",
        title = "Economic Growth and Life Expectancy",
        subtitle = "Data points are country-years",
        caption = "Source: Gapminder.")
