@@ -6,7 +6,7 @@
 # Clear out Console and Environment
 rm(list=ls(all=TRUE))
 cat("\014")
-
+library(tidyverse)
 # Download the original data file; 
 # https://intro-to-r.com/data-files
 # A timed example of readr::read_csv()

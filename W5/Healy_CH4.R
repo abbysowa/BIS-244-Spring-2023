@@ -135,7 +135,7 @@ p + geom_line(color="gray70", mapping=aes(group = country)) +
          title = "GDP per capita on Five Continents")      
 
 # Why did we specify "se = FALSE"?
-
+# 
 # Healy switches to GSS data. Let's look at it:
 
 View(gss_sm)
