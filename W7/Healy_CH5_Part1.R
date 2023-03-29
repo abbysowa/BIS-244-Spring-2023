@@ -61,13 +61,14 @@ rel_by_region
 rel_by_region %>% group_by(bigregion) %>%
     summarize(total = sum(pct)) 
 
+#no because we rounded up
+
 # Do we need group_by?
 
 rel_by_region %>% summarize(total = sum(pct))
 
 # =======================================
 # Plotting our summarisation
-
 p <- ggplot(rel_by_region, aes(x = bigregion, y = pct, fill = religion))
 p + geom_col(position = "dodge2") +
     labs(x = "Region",y = "Percent", fill = "Religion") +
@@ -76,7 +77,6 @@ p + geom_col(position = "dodge2") +
 p + geom_col(position = "dodge") +
   labs(x = "Region",y = "Percent", fill = "Religion") +
   theme(legend.position = "top") 
-
 # BTW, "dodge2" is a newer way with thinner columns of doing
     
 # ==============================================

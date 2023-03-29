@@ -7,6 +7,53 @@ library(socviz)
 
 ## 3.3 Mappings Link Data to Things You See
 
+View(gapminder)
+
+p <- ggplot(data = gapminder,
+            mapping = aes(x = year,
+                          y = gdpPercap))
+
+p + geom_line(color ="gray80", mapping = aes(group = country)) + 
+  scale_y_log10()+
+  geom_smooth(size = 1.2, method = "loess", se = FALSE)+
+  facet_wrap(~ continent, ncol=5)
+
+#right answer
+p + geom_line(color="gray70", mapping=aes(group = country)) +
+  geom_smooth(size = 1.1, method = "loess", se = FALSE) +
+  scale_y_log10(labels=scales::dollar) +
+  facet_wrap(~ continent, ncol = 5) +
+  labs(x = "Year",
+       y = "log GDP per capita",
+       title = "GDP per capita on Five Continents")      
+
+#try again
+p <- ggplot(data = gapminder,
+            mapping = aes(x = year,
+            y = gdpPercap))
+
+p+ geom_line() + 
+  facet_wrap (~continent)
+p
+
+p <- ggplot(data = gapminder,
+       mapping=aes(x=gdpPercap,
+                   y = lifeExp,
+                   color = continent))
+p + geom_point() +
+  geom_smooth(method = "loess") +
+  scale_x_log10(labels = scales::dollar)
+
+
+p <- ggplot(data = gapminder,
+            mapping = aes(x = gdpPercap,
+                          y = lifeExp,
+                          color = continent))
+p + geom_point() +
+  geom_smooth(method = "loess") +
+  scale_x_log10()
+
+
 # Reminder of what gapminder looks like
 gapminder <- gapminder
 view(gapminder)
