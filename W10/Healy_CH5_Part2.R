@@ -14,7 +14,7 @@ by_country <- organdata %>% group_by(consent_law, country) %>%
             roads_mean = mean(roads, na.rm = TRUE),
             cerebvas_mean = mean(cerebvas, na.rm = TRUE))
 
-by_country
+View(by_country)
 # donors. Organ Donation rate per million population.
 # gdp. Gross Domestic Product in thousands of PPP dollars.
 # health. Health spending, thousands of PPP dollars per capita.
@@ -91,8 +91,8 @@ p <- ggplot(data = by_country,
 
 p + geom_point() +
     geom_text_repel(data = subset(by_country,
-                                  gdp_mean > 25000 | health_mean < 1500 |
-                                  country %in% "Belgium"),
+                                  gdp_mean > 25000 | health_mean < 1500  |
+                                    country %in% "Belgium"),
                     mapping = aes(label = country))      
 
 # Instead of geom_text_repel, you can use geom_text
@@ -112,6 +112,8 @@ p + geom_point() +
 # ccode. Abbreviated country code.
 organdata$ind <- organdata$ccode %in% c("Ita", "Spa") &
                     organdata$year > 1998
+
+view(organdata)
 
 p <- ggplot(data = organdata,
             mapping = aes(x = roads,
