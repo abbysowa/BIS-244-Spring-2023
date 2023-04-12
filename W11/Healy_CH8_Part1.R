@@ -41,7 +41,7 @@ p1 + geom_smooth()
 
 #  ... and add some text labels...
 p2 <- p1 + 
-  geom_text_repel(data=subset(asasec, Year == 2014 & Revenues > 10000), size = 2)
+  geom_text_repel(data=subset(asasec, Year == 2014 & Revenues > 10000), size = 4)
 
 p2
 
