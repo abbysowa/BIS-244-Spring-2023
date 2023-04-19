@@ -1,22 +1,22 @@
 ## BIS 244 Chapter 8 part 2 Week 12
 
+# Clear out Console and Environment
+rm(list=ls(all=TRUE))
+cat("\014")
+
 library(gapminder)
 library(tidyverse)
 library(ggrepel)
 library(socviz)
 
 # Get us back up through section 8.2 material
-
 # Democrat Blue and Republican Red color
 party_colors <- c("#2E74C0", "#CB454A")
 color_comp(party_colors)
 party_colors <- c("#0000ff","#ff0000")
 color_comp(party_colors)
-
 #Election results flipped counties in the US 2006 election
-
 county_data <- county_data
-
 # Define the environment which is x= population and y the percent black
 p0 <- ggplot(data = subset(county_data,
                            flipped == "No"),
